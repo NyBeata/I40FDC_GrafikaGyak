@@ -52,6 +52,15 @@ void handle_game_events(Game* game)
             case SDL_SCANCODE_S:
                 set_left_pad_speed(&(game->pong), +300);
                 break;
+            case SDL_SCANCODE_0:
+                resize_ball(&(game->pong.ball), 10);
+                break;
+            case SDL_SCANCODE_1:
+                resize_ball(&(game->pong.ball), 50);
+                break;
+            case SDL_SCANCODE_2:
+                resize_ball(&(game->pong.ball), 90);
+                break;
             default:
                 break;
             }
@@ -70,8 +79,10 @@ void handle_game_events(Game* game)
             SDL_GetMouseState(&x, &y);
             set_right_pad_position(&(game->pong), y);
             break;
-        //case SDL_MOUSEBUTTONDOWN:
-
+        case SDL_MOUSEBUTTONDOWN:
+            SDL_GetMouseState(&mouse_x, &mouse_y);
+            init_ball(&(game->pong.ball), mouse_x, mouse_y);
+            break;
         case SDL_QUIT:
             game->is_running = false;
             break;

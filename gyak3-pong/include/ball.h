@@ -8,9 +8,11 @@ typedef struct Ball
 {
     float x;
     float y;
+    float rotation;
     float radius;
     float speed_x;
     float speed_y;
+    float rot_speed;
 } Ball;
 
 /**
@@ -28,5 +30,7 @@ void update_ball(Ball* ball, double time);
  * Render the ball.
  */
 void render_ball(Ball* ball);
+
+void resize_ball(Ball* ball, float size);
 
 #endif /* BALL_H */

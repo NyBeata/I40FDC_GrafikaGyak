@@ -5,6 +5,7 @@
 #include "pad.h"
 
 #include <stdbool.h>
+#include <math.h>
 
 /**
  * Pong game elements
@@ -16,6 +17,8 @@ typedef struct Pong
     Ball ball;
     Pad left_pad;
     Pad right_pad;
+    int score_r;
+    int score_l;
 } Pong;
 
 /**
@@ -57,5 +60,6 @@ void set_right_pad_speed(Pong* pong, float speed);
  * Bounce the ball when necessary.
  */
 void bounce_ball(Pong* pong);
+
 
 #endif /* PONG_H */

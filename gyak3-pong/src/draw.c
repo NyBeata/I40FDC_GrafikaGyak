@@ -53,5 +53,19 @@ void draw_game(Game* game)
     glColor3f(1.0, 0.9, 0.8);
     glutSolidSphere(game->ball.radius, 8, 8);
     glPopMatrix();
+
+    print_score(game);
 }
 
+void print_score(Game* game)
+{
+    char str[9];
+    sprintf(str, "SCORE: %d", game->pong.score_r);
+    glColor3f( 1, 1, 1 );
+    glRasterPos2f(50, 50);
+    int len, i;
+    len = (int)strlen(str);
+    for (i = 0; i < len; i++) {
+    glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, str[i]);
+  }
+}
