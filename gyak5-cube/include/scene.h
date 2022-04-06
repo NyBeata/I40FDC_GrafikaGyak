@@ -11,7 +11,9 @@ typedef struct Scene
     Model cube, cat;
     Material material;
     GLuint texture_cat, texture_cube;
-    int rotate_cat;
+    float cat_rotation;
+    int base_time;
+    int elapsed_time;
 } Scene;
 
 /**

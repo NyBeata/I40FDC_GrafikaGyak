@@ -91,10 +91,10 @@ void render_scene(Scene* scene)
     }*/
 
     glPushMatrix();
-    glRotatef(scene->rotate_cat,0,0,1);
+    glRotatef(scene->cat_rotation,0,0,1);
     glTranslatef(1,0,0);
-    glRotatef(scene->rotate_cat*5,0,0,1);
-    scene->rotate_cat--;
+    glRotatef(scene->cat_rotation*5,0,0,1);
+    scene->cat_rotation -= scene->elapsed_time;
     glScalef(0.01, 0.01, 0.01);
     glBindTexture(GL_TEXTURE_2D, scene->texture_cat);
     draw_model(&(scene->cat));
