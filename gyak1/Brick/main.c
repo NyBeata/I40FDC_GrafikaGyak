@@ -4,9 +4,9 @@
 
 
 typedef struct Brick{
-    int aoldal;
-    int boldal;
-    int coldal;
+    int side_a;
+    int side_b;
+    int side_c;
 
 } Brick;
 
@@ -20,11 +20,11 @@ int main()
     Brick test;
 
     setSize(&test);
-    printf(" A test felszine: %d \t terfogata: %d\n",calcSurface(&test),calcVolume(&test));
+    printf(" Surface: %d \t Volume: %d\n",calcSurface(&test),calcVolume(&test));
     if( isSquare(&test) == true){
-        printf("A testnek van negyzet oldallapja\n");
+        printf("The body has square sides\n");
     }else{
-        printf("A testnek nincs oldallapja\n");
+        printf("The body has no square sides\n");
     }
 
     return 0;
@@ -36,30 +36,30 @@ void setSize( Brick* b){
     bool ok;
     ok=false;
     do{
-        printf("Adja meg az a el hooszat:");
-        scanf("%d",&b->aoldal);
-        if(b->aoldal < 1){
-            printf("Nem lehet 1 nel kisebb az el!\n");
+        printf("Enter the length of edge 'a':");
+        scanf("%d",&b->side_a);
+        if(b->side_a < 1){
+            printf("The edge can't be less than 1!\n");
         }else ok=true;
     }while(!ok);
 
     ok= false;
 
     do{
-        printf("Adja meg az b el hooszat:");
-        scanf("%d",&b->boldal);
-        if(b->boldal < 1){
-            printf("Nem lehet 1 nel kisebb az el!\n");
+        printf("Enter the length of edge 'b':");
+        scanf("%d",&b->side_b);
+        if(b->side_b < 1){
+            printf("The edge can't be less than 1!\n");
         }else ok=true;
     }while(!ok);
 
     ok=false;
 
     do{
-        printf("Adja meg az c el hooszat:");
-        scanf("%d",&b->coldal);
-        if(b->coldal < 1){
-            printf("Nem lehet 1 nel kisebb az el!\n");
+        printf("Enter the length of edge 'b':");
+        scanf("%d",&b->side_c);
+        if(b->side_c < 1){
+            printf("The edge can't be less than 1!\n");
         }else ok=true;
     }while(!ok);
 
@@ -69,7 +69,7 @@ void setSize( Brick* b){
 int calcVolume( Brick* b){
 
     int volume;
-    volume = b->aoldal*b->boldal*b->coldal;
+    volume = b->side_a*b->side_b*b->side_c;
 
     return volume;
 
@@ -78,7 +78,7 @@ int calcVolume( Brick* b){
 int calcSurface( Brick* b){
 
     int surface;
-    surface = 2*(b->aoldal+b->boldal+b->aoldal+b->coldal+b->boldal+b->coldal);
+    surface = 2*(b->side_a+b->side_b+b->side_a+b->side_c+b->side_b+b->side_c);
 
     return surface;
 
@@ -88,11 +88,11 @@ bool isSquare( Brick* b){
 
     bool square;
     square= false;
-    if(b->aoldal == b->boldal){
+    if(b->side_a == b->side_b){
         square=true;
-    }else if( b->aoldal == b->coldal){
+    }else if( b->side_a == b->side_c){
         square=true;
-    }else if(b->boldal == b->coldal){
+    }else if(b->side_b == b->side_c){
         square=true;
     }
 
