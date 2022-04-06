@@ -11,9 +11,9 @@ typedef struct Brick{
 } Brick;
 
 void setSize( Brick* b);
-int calcVolume( Brick* b);
-int calcSurface( Brick* b);
-bool isSquare( Brick* b);
+int calcVolume(const Brick* b);
+int calcSurface(const Brick* b);
+bool isSquare(const Brick* b);
 
 int main()
 {
@@ -33,40 +33,40 @@ int main()
 
 void setSize( Brick* b){
 
-    bool ok;
-    ok=false;
+    bool is_ok;
+    is_ok=false;
     do{
         printf("Enter the length of edge 'a':");
         scanf("%d",&b->side_a);
         if(b->side_a < 1){
             printf("The edge can't be less than 1!\n");
-        }else ok=true;
-    }while(!ok);
+        }else is_ok=true;
+    }while(!is_ok);
 
-    ok= false;
+    is_ok= false;
 
     do{
         printf("Enter the length of edge 'b':");
         scanf("%d",&b->side_b);
         if(b->side_b < 1){
             printf("The edge can't be less than 1!\n");
-        }else ok=true;
-    }while(!ok);
+        }else is_ok=true;
+    }while(!is_ok);
 
-    ok=false;
+    is_ok=false;
 
     do{
         printf("Enter the length of edge 'b':");
         scanf("%d",&b->side_c);
         if(b->side_c < 1){
             printf("The edge can't be less than 1!\n");
-        }else ok=true;
-    }while(!ok);
+        }else is_ok=true;
+    }while(!is_ok);
 
     return ;
 }
 
-int calcVolume( Brick* b){
+int calcVolume(const Brick* b){
 
     int volume;
     volume = b->side_a*b->side_b*b->side_c;
@@ -75,7 +75,7 @@ int calcVolume( Brick* b){
 
 }
 
-int calcSurface( Brick* b){
+int calcSurface(const Brick* b){
 
     int surface;
     surface = 2*(b->side_a+b->side_b+b->side_a+b->side_c+b->side_b+b->side_c);
@@ -84,18 +84,18 @@ int calcSurface( Brick* b){
 
 }
 
-bool isSquare( Brick* b){
+bool isSquare(const Brick* b){
 
-    bool square;
-    square= false;
+    bool is_square;
+    is_square= false;
     if(b->side_a == b->side_b){
-        square=true;
+        is_square=true;
     }else if( b->side_a == b->side_c){
-        square=true;
+        is_square=true;
     }else if(b->side_b == b->side_c){
-        square=true;
+        is_square=true;
     }
 
-    return square;
+    return is_square;
 
 }
