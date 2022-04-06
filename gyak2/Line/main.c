@@ -10,9 +10,9 @@
 
 int mouseX;
 int mouseY;
-#define NoLines 100
+#define NoLines 10
 
-Line LoL[NoLines]; 
+Line line_array[NoLines]; 
 
 int main(int argc, char* argv[])
 {
@@ -49,15 +49,15 @@ int main(int argc, char* argv[])
       switch (event.type) {
       case SDL_MOUSEBUTTONDOWN:
       SDL_GetMouseState(&mouseX, &mouseY);
-      printf("x: %d y: %d", mouseX, mouseY);
+      printf("\nx: %d y: %d", mouseX, mouseY);
       if(current==-1){
-        LoL[0].x1 = mouseX;
-        LoL[0].y1 = mouseY;
+        line_array[0].x1 = mouseX;
+        line_array[0].y1 = mouseY;
       }else{
-        LoL[current].x2 = mouseX;
-        LoL[current].y2 = mouseY;
-        LoL[current+1].x1 = mouseX;
-        LoL[current+1].y1 = mouseY;
+        line_array[current].x2 = mouseX;
+        line_array[current].y2 = mouseY;
+        line_array[current+1].x1 = mouseX;
+        line_array[current+1].y1 = mouseY;
       } 
       current++;
       break;
@@ -75,7 +75,7 @@ int main(int argc, char* argv[])
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     for(i=0; i<current; i++){
-      DrawLine(LoL[i]);
+      DrawLine(line_array[i]);
     }
 
      SDL_GL_SwapWindow(window);
