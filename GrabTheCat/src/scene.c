@@ -213,8 +213,6 @@ void get_elapsed_time(Scene* scene)
     if(new_elapsed_time >= 1){
         scene->elapsed_time = new_elapsed_time;
         scene->base_time = current_time;
-
-        //printf("\nElapsed time: %d, New base time: %d", scene->elapsed_time, scene->base_time);
     }
     else{
         scene->elapsed_time = 0;

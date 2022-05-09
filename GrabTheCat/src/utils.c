@@ -125,7 +125,6 @@ void drawMenu(GLuint texture)
 	
 	glPushMatrix();
 	glLoadIdentity();
-	//glTranslatef(0,0,1);
 	glBegin(GL_QUADS);
 		glTexCoord2f(0.0, 0.0);
         glVertex3d(0, 0, 0);

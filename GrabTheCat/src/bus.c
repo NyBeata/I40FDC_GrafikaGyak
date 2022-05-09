@@ -8,10 +8,6 @@ void init_bus(Bus* bus)
 
     bus->speed = 0.01;
     bus->position.z = -0.2;
-    /*bus->position.x = 1.5;
-    bus->position.y = 0;
-    bus->rotation = 0;
-    bus->cooldown = 0;*/
 }
 
 void spawn_bus(Bus* bus)
