@@ -29,6 +29,7 @@ typedef struct Scene
     bool is_start;
     bool is_over;
     int final_countdown;
+    bool paused;
 } Scene;
 
 /**

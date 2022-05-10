@@ -42,8 +42,9 @@ void init_scene(Scene* scene)
 
     scene->is_start = true;
     scene->is_over = false;
+    scene->paused = false;
 
-    scene->final_countdown = 4000;
+    scene->final_countdown = 4000;  
 }
 
 void set_lighting()
@@ -143,7 +144,7 @@ void render_scene(Scene* scene)
             glBindTexture(GL_TEXTURE_2D, scene->cats[i].texture);
             
             if(scene->cats[i].is_dead == true){
-                glTranslatef(0, 0, -0.3);
+                glTranslatef(0, 0, -0.22);
                 glScalef(1.2, 1.5, 0.01);
             }
             
@@ -177,11 +178,13 @@ void render_scene(Scene* scene)
         char str[3];
         sprintf(str, "%d", scene->score);
         int text_x;
-        if(scene->score >= 10){
+        if(scene->score >= 10 && scene->score < 100){
             text_x = 530;
-        } else {
+        } else if(scene->score < 10){
             text_x = 580;
-        } 
+        } else if(scene->score >= 100){
+            text_x = 480;
+        }
         drawText(text_x, 470, 1.4, 10, GLUT_STROKE_ROMAN, str, 1, 1, 1);
     }
         
