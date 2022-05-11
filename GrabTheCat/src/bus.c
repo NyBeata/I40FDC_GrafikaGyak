@@ -12,6 +12,7 @@ void init_bus(Bus* bus)
 
 void spawn_bus(Bus* bus)
 {
+    // jobb vagy bal oldal eldöntése
     int LoR = (rand() %(1 - 0 + 1)) + 0;
 
     if(LoR == 0){

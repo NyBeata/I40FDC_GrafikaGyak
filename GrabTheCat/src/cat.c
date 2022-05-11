@@ -8,6 +8,7 @@ void cat_ai_handler(Cat* cat, uint32_t elapsed_time)
         cat->speed = ((rand() %(32 - 10 + 1)) + 10) * 0.000028;
         float distance = cat->position.x * 0.5;
 
+        // ha az út elött van
         if(cat->position.x < ROAD_START){
             if(cat->position.y > 1+distance){
                 cat->new_rotation = (rand() %(0 - (-80) + 1)) + (-80);
@@ -17,6 +18,7 @@ void cat_ai_handler(Cat* cat, uint32_t elapsed_time)
              cat->new_rotation = (rand() %(80 - (-80) + 1)) + (-80);
             }
 
+        // ha az úton van
         } else if (cat->position.x >= ROAD_START && cat->position.x < ROAD_END){
             if(cat->position.y > 1+distance){
                 cat->new_rotation = (rand() %(0 - (-180) + 1)) + (-180);
@@ -26,6 +28,7 @@ void cat_ai_handler(Cat* cat, uint32_t elapsed_time)
              cat->new_rotation = (rand() %(180 - (-180) + 1)) + 0;
             }
 
+        //ha túlment az úton
         } else if (cat->position.x >= ROAD_END){
              if(cat->position.y > 1+distance){
                 cat->new_rotation = (rand() %((-100) - (-180) + 1)) + (-180);
@@ -43,20 +46,24 @@ void cat_ai_handler(Cat* cat, uint32_t elapsed_time)
 void move_cat(Cat* cat, uint32_t elapsed_time)
 {
     if(cat->rotation == cat->new_rotation){
+        // cica mozgás sebesség és irány alapján
         cat->position.x += cat->speed * cos(degree_to_radian(cat->rotation)) * elapsed_time;
         cat->position.y += cat->speed * sin(degree_to_radian(cat->rotation)) * elapsed_time;
     } else if (cat->rotation > cat->new_rotation){
+        // forgás erre
         cat->rotation -= elapsed_time*0.2;
         if(cat->rotation < cat->new_rotation){
             cat->rotation = cat->new_rotation;
         }
     } else if (cat->rotation < cat->new_rotation){
+        // forgás arra
         cat->rotation += elapsed_time*0.2;
         if(cat->rotation > cat->new_rotation){
             cat->rotation = cat->new_rotation;
         }
     } 
 
+    // macska megállítása az út végén
     if(cat->position.x > ROAD_END){
         cat->position.x = ROAD_END;
     }

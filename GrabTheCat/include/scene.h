@@ -57,11 +57,6 @@ void update_scene(Scene* scene);
  */
 void render_scene(Scene* scene);
 
-/**
- * Draw the origin of the world coordinate system.
- */
-void draw_origin();
-
 void get_elapsed_time(Scene* scene);
 
 void grab_the_cat(Scene* scene);
